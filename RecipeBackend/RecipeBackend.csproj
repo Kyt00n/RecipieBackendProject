@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>RecipieBackend</RootNamespace>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RecipeBackend.Domain\RecipeBackend.Domain.csproj" />
+      <ProjectReference Include="..\RecipeBackend.WebAPI\RecipeBackend.WebAPI.csproj" />
+        <ProjectReference Include="..\RecipeBackend.Infrastructure\RecipeBackend.Infrastructure.csproj" />
+        <ProjectReference Include="..\RecipeBackend.Application\RecipeBackend.Application.csproj" />
+        
     </ItemGroup>
 
 </Project>

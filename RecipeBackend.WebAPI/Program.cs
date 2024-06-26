@@ -1,3 +1,33 @@
-﻿// See https://aka.ms/new-console-template for more information
+using RecipeBackend.Application;
+using RecipeBackend.Infrastructure;
+using Serilog;
 
-Console.WriteLine("Hello, World!");
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddApplication();
+builder.Services
+    .AddInfrastucture(builder.Configuration);
+    
+// builder.Host.UseSerilog((context, configuration) =>
+//     configuration.ReadFrom.Configuration(context.Configuration)
+// );
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.MapControllers();
+
+
+app.Run();
