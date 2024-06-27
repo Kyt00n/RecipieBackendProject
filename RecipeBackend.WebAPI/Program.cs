@@ -14,7 +14,6 @@ builder.Services.AddSwaggerGen();
 
 // Add application and infrastructure services
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
 
 // Add JWT authentication
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);

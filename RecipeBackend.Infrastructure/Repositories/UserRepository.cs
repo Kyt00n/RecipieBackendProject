@@ -1,9 +1,7 @@
 ﻿using RecipeBackend.Application.Interfaces;
 using RecipeBackend.Domain.Entities;
-using RecipeBackend.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using System;
 using RecipeBackend.Infrastructure.Infrastructure;
 
 namespace RecipeBackend.Infrastructure.Repositories
