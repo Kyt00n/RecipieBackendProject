@@ -1,12 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeBackend.Application", "RecipeBackend.Application\RecipeBackend.Application.csproj", "{DBE18202-733E-475D-A07E-1E7CF5034100}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBackend.Application", "RecipeBackend.Application\RecipeBackend.Application.csproj", "{DBE18202-733E-475D-A07E-1E7CF5034100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeBackend.Infrastructure", "RecipeBackend.Infrastructure\RecipeBackend.Infrastructure.csproj", "{94930249-32F2-4EE3-B202-40A9D9B04F0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBackend.Infrastructure", "RecipeBackend.Infrastructure\RecipeBackend.Infrastructure.csproj", "{94930249-32F2-4EE3-B202-40A9D9B04F0A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{685483E7-FE00-4517-8CCA-8A1A63679067} = {685483E7-FE00-4517-8CCA-8A1A63679067}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeBackend.Domain", "RecipeBackend.Domain\RecipeBackend.Domain.csproj", "{685483E7-FE00-4517-8CCA-8A1A63679067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBackend.Domain", "RecipeBackend.Domain\RecipeBackend.Domain.csproj", "{685483E7-FE00-4517-8CCA-8A1A63679067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeBackend.WebAPI", "RecipeBackend.WebAPI\RecipeBackend.WebAPI.csproj", "{974AA23B-C5E2-490D-BEA3-2B06F63AC45A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeBackend.WebAPI", "RecipeBackend.WebAPI\RecipeBackend.WebAPI.csproj", "{974AA23B-C5E2-490D-BEA3-2B06F63AC45A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +36,8 @@ Global
 		{974AA23B-C5E2-490D-BEA3-2B06F63AC45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{974AA23B-C5E2-490D-BEA3-2B06F63AC45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{974AA23B-C5E2-490D-BEA3-2B06F63AC45A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
