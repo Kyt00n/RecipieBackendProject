@@ -1,17 +1,20 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using RecipeBackend.Domain.Entities;
-using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using RecipeBackend.Application.Interfaces;
+using RecipeBackend.Domain.Entities;
 
-public class TokenService
+namespace RecipeBackend.Application.Services;
+
+public class TokenService : ITokenService
 {
     private readonly string _secret;
 
     public TokenService(IConfiguration configuration)
     {
-        _secret = configuration["Jwt:Key"];
+        _secret = configuration["JwtSettings:Secret"];
     }
 
     public string GenerateToken(UserEntity user)

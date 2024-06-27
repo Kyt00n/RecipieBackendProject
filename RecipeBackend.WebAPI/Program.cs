@@ -4,6 +4,8 @@ using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using RecipeBackend.Application.Interfaces;
+using RecipeBackend.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +16,10 @@ builder.Services.AddSwaggerGen();
 
 // Add application and infrastructure services
 builder.Services.AddApplication();
-
+builder.Services.AddInfrastucture(builder.Configuration);
+builder.Services.AddScoped<ITokenService, TokenService>();
 // Add JWT authentication
-var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+var key = Encoding.ASCII.GetBytes(builder.Configuration["JwtSettings:Secret"]);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

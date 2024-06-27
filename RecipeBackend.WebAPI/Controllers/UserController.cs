@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto.Generators;
 using RecipeBackend.Application.Interfaces;
 using RecipeBackend.Domain.Entities;
+using RecipeBackend.WebAPI.Dtos;
 
 namespace RecipeBackend.WebAPI.Controllers;
 
@@ -10,15 +12,11 @@ namespace RecipeBackend.WebAPI.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IMapper _mapper;
-
-    public UserController(IMapper mapper)
-    {
-        _mapper = mapper;
-    }
+    
     private readonly IUserRepository _userRepository;
-    private readonly TokenService _tokenService;
-
-    public UserController(IUserRepository userRepository, TokenService tokenService)
+    private readonly ITokenService _tokenService;
+    
+    public UserController(IUserRepository userRepository, ITokenService tokenService)
     {
         _userRepository = userRepository;
         _tokenService = tokenService;
@@ -34,7 +32,7 @@ public class UserController : ControllerBase
         var user = new UserEntity
         {
             Username = userDto.Username,
-            Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password),
+            Password = userDto.Password,
             Email = userDto.Email,
             Role = userDto.Role
         };
@@ -47,16 +45,11 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
         var user = await _userRepository.GetUserByUsername(loginDto.Username);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
+        if (user == null || user.Password != loginDto.Password)
             return Unauthorized();
 
         var token = _tokenService.GenerateToken(user);
         return Ok(new { Token = token });
     }
-
-    [HttpPost]
-    public IActionResult Login()
-    {
-        return Ok();
-    }
+    
 }
