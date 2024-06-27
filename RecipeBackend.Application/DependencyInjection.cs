@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using RecipeBackend.Application.Interfaces;
 
 namespace RecipeBackend.Application;
 
@@ -10,5 +11,7 @@ public static class DependencyInjection
         var assembly = typeof(DependencyInjection).Assembly;
         services.AddMediatR(configuration =>
             configuration.RegisterServicesFromAssembly(assembly));
+        services.AddScoped<IUserRepository, UserRepository>();
+        return services;
     }
 }
