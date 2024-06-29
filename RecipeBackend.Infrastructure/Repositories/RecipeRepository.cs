@@ -42,7 +42,7 @@ public class RecipeRepository : IRecipeRepository
     {
         var productIds = products.Select(p => p.Id).ToList();
         return await _context.Recipes
-            .Where(r => productIds.All(pid => r.Ingredients.Any(i => i.Id == pid)))
+            .Where(r => productIds.Any(pid => r.Ingredients.Any(i => i.Id == pid)))
             .ToListAsync();
     }
 }

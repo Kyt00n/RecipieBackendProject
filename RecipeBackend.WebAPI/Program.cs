@@ -19,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastucture(builder.Configuration);
 builder.Services.AddScoped<ITokenService, TokenService>();
+
 // Add JWT authentication
 var key = Encoding.ASCII.GetBytes(builder.Configuration["JwtSettings:Secret"]);
 builder.Services.AddAuthentication(options =>

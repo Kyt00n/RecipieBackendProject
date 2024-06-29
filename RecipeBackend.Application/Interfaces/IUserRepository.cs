@@ -12,7 +12,7 @@ namespace RecipeBackend.Application.Interfaces
     public interface IUserRepository
     {
         Task AddUser(UserEntity user);
-        Task<UserEntity> GetUserByUsername(string username);
+        Task<UserEntity>? GetUserByUsername(string username);
     }
 }
 
